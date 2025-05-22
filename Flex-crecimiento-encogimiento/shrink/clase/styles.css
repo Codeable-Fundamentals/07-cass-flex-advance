@@ -1,25 +1,24 @@
-      body {
-        font-family: system-ui;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 20px;
-      }
-      .container {
-        width: 400px;
-        display: flex;
-        justify-content: center;
+body {
+  font-family: system-ui;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(240, 202, 154);
+}
 
-        background-color: rgb(240, 202, 154);
-      }
-
-      .box {
-        width: 200px;
-        height: 200px;
-        margin: 10px; 
-        background-color: #1f5d87;
-      }
-      /* Calculos CON MARGIN */
-      /* 
+.box {
+  width: 200px;
+  height: 200px;
+  /* margin: 10px; */
+  background-color: #1f5d87;
+}
+/* Calculos CON MARGIN */
+/* 
       Márgenes (NO se encogen):
         • 3 cajas × (10px izq + 10px der) = 3 × 20px = 60px fijos
 
@@ -58,10 +57,10 @@
         box 2 = 44px
         box 3 = 148px
 
-        */  
+        */
 
-      /* Calculos SIN MARGIN */
-      /*
+/* Calculos SIN MARGIN */
+/*
             box 1 = 200px
             box 2 = 200px
             box 3 = 200px
@@ -96,7 +95,7 @@
             box 3 = 160px
         */
 
-        /*
+/*
         
         NOTA IMPORTANTE!
         
@@ -107,9 +106,18 @@
         ❌ Paddings
         
         */
-      .shrink-1 {
-        flex-shrink: 1; /* Se encoge */
-      }
-      .shrink-3 {
-        flex-shrink: 3; /* Se encoge más que el anterior */
-      }
+.shrink-1 {
+  flex-shrink: 1; /* Se encoge */
+}
+.shrink-3 {
+  flex-shrink: 3; /* Se encoge más que el anterior */
+}
+
+/* .flex-basis-0 {
+  flex-basis: 0;
+} */
+
+/* nuevos claculos */
+
+
+
