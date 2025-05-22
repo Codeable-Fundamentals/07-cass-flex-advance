@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplos de align-content</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Ejemplos de align-self en Flexbox</h1>
+    <p>
+      La propiedad <code>align-self</code> controla la alineación de un elemento
+      individual, sobrescribiendo el valor de <code>align-items</code> del
+      contenedor.
+    </p>
+
+    <div class="container align-items-center">
+      <div class="item">Normal</div>
+      <div class="item claseXXX">GRECIA</div>
+      <div class="item self-start">flex-start</div>
+      <div class="item self-end">flex-end</div>
+      <div class="item self-center">center</div>
+      <div class="item self-stretch">stretch</div>
+      <div class="item self-baseline">baseline</div>
+    </div>
+
+    <h2>Ejemplo con texto de diferentes tamaños para baseline</h2>
+    <div class="container align-items-center baseline-demo">
+      <div class="item">Normal</div>
+      <div class="item text-small self-baseline">pequeño</div>
+      <div class="item text-large self-baseline">GRANDE</div>
+      <div class="item">Normal</div>
+      <div class="item text-xl self-baseline">XL</div>
+    </div>
+  </body>
+</html>

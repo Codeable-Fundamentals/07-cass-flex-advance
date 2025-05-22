@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex-shrink: Ejemplos con Cálculos</title>
+    <link rel="stylesheet" href="shrink-style.css">
+</head>
+<body>
+    <h1>🔧 Flex-shrink: Guía Completa con Cálculos</h1>
+    
+    <div class="highlight">
+        <strong>📝 Concepto clave:</strong> flex-shrink controla qué tan rápido se encoge cada elemento cuando no hay suficiente espacio en el contenedor.
+    </div>
+
+    <div class="example-title">
+        📊 Ejemplo 1: Comportamiento por defecto (flex-shrink: 1)
+    </div>
+    
+    <p><strong>Situación:</strong> 3 elementos de 150px en un contenedor de 400px</p>
+    
+    <div class="container example1">
+        <div class="item">150px</div>
+        <div class="item">150px</div>
+        <div class="item">150px</div>
+    </div>
+    
+    <div class="calculation">
+        <strong>🧮 Cálculo:</strong><br>
+        • Espacio necesario: 3 × 150px = 450px<br>
+        • Espacio disponible: 400px<br>
+        • Exceso: 450px - 400px = 50px<br>
+        • flex-shrink de todos: 1 (valor por defecto)<br>
+        • Cada elemento se encoge: 50px ÷ 3 = 16.67px<br>
+        • Tamaño final: 150px - 16.67px = 133.33px cada uno
+    </div>
+
+    <div class="example-title">
+        🎯 Ejemplo 2: flex-shrink con valores diferentes
+    </div>
+    
+    <p><strong>Situación:</strong> Elementos con flex-shrink: 1, 2, y 0</p>
+    
+    <div class="container example2">
+        <div class="item item1">shrink: 1</div>
+        <div class="item item2">shrink: 2</div>
+        <div class="item item3">shrink: 0</div>
+    </div>
+    
+    <div class="calculation">
+        <strong>🧮 Cálculo detallado:</strong><br>
+        • Espacio a reducir: 450px - 400px = 50px<br>
+        • Pesos: (1×150) + (2×150) + (0×150) = 150 + 300 + 0 = 450<br><br>
+        
+        <strong>Elemento 1 (shrink: 1):</strong><br>
+        • Proporción: (1 × 150) ÷ 450 = 150/450 = 1/3<br>
+        • Reducción: 50px × (1/3) = 16.67px<br>
+        • Tamaño final: 150px - 16.67px = 133.33px<br><br>
+        
+        <strong>Elemento 2 (shrink: 2):</strong><br>
+        • Proporción: (2 × 150) ÷ 450 = 300/450 = 2/3<br>
+        • Reducción: 50px × (2/3) = 33.33px<br>
+        • Tamaño final: 150px - 33.33px = 116.67px<br><br>
+        
+        <strong>Elemento 3 (shrink: 0):</strong><br>
+        • No se encoge: 150px (mantiene tamaño original)
+    </div>
+
+    <div class="example-title">
+        ⚖️ Ejemplo 3: Anchos iniciales diferentes
+    </div>
+    
+    <p><strong>Situación:</strong> Elementos de 200px y 300px con flex-shrink: 1</p>
+    
+    <div class="container example3">
+        <div class="item item1">200px<br>shrink: 1</div>
+        <div class="item item2">300px<br>shrink: 1</div>
+    </div>
+    
+    <div class="calculation">
+        <strong>🧮 ¡Importante! El cálculo considera el ancho inicial:</strong><br>
+        • Espacio necesario: 200px + 300px = 500px<br>
+        • Espacio disponible: 500px<br>
+        • Exceso: 500px - 500px = 0px<br>
+        • No hay reducción necesaria en este caso<br><br>
+        
+        <strong>Si el contenedor fuera de 400px:</strong><br>
+        • Exceso: 500px - 400px = 100px<br>
+        • Pesos: (1×200) + (1×300) = 500<br>
+        • Elemento 1: 100px × (200/500) = 40px de reducción → 160px final<br>
+        • Elemento 2: 100px × (300/500) = 60px de reducción → 240px final
+    </div>
+
+    <div class="example-title">
+        🔄 Ejemplo 4: Comparación visual
+    </div>
+    
+    <div class="comparison">
+        <div>
+            <h4>SIN flex-shrink controlado:</h4>
+            <div class="container before">
+                <div class="item" style="width: 200px;">200px</div>
+                <div class="item" style="width: 200px;">200px</div>
+            </div>
+            <p><em>Se encogen igual (comportamiento por defecto)</em></p>
+        </div>
+        
+        <div>
+            <h4>CON flex-shrink controlado:</h4>
+            <div class="container after">
+                <div class="item item1" style="width: 200px;">shrink: 1</div>
+                <div class="item item2" style="width: 200px;">shrink: 3</div>
+            </div>
+            <p><em>El segundo se encoge 3 veces más rápido</em></p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h3>🎓 Puntos clave para tus estudiantes:</h3>
+        <ol>
+            <li><strong>flex-shrink: 0</strong> → El elemento NO se encoge</li>
+            <li><strong>flex-shrink: 1</strong> → Encogimiento normal (por defecto)</li>
+            <li><strong>flex-shrink: 2+</strong> → Se encoge más rápido</li>
+            <li>El cálculo considera tanto el valor de flex-shrink como el ancho inicial</li>
+            <li>Solo actúa cuando los elementos NO caben en el contenedor</li>
+        </ol>
+    </div>
+
+    <div class="example-title">
+        🛠️ Casos de uso prácticos
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 5px;">
+        <h4>Cuándo usar cada valor:</h4>
+        <ul>
+            <li><strong>flex-shrink: 0</strong> → Elementos que deben mantener su tamaño (logos, botones importantes)</li>
+            <li><strong>flex-shrink: 1</strong> → Contenido normal que puede adaptarse</li>
+            <li><strong>flex-shrink: 2+</strong> → Elementos menos importantes que pueden encogerse más</li>
+        </ul>
+        
+        <h4>Ejemplo real: Header de navegación</h4>
+        <ul>
+            <li>Logo: flex-shrink: 0 (nunca se encoge)</li>
+            <li>Menú principal: flex-shrink: 1 (se adapta moderadamente)</li>
+            <li>Texto secundario: flex-shrink: 3 (se encoge rápidamente en móviles)</li>
+        </ul>
+    </div>
+
+</body>
+</html>

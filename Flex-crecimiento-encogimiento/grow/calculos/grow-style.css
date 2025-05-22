@@ -1,0 +1,260 @@
+/* Estilos generales */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+  color: #2c3e50;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+  border-left: 5px solid #e74c3c;
+  padding-left: 15px;
+}
+
+code {
+  background-color: #f8f9fa;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  color: #e74c3c;
+}
+
+pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 5px solid #e74c3c;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  overflow-x: auto;
+}
+
+.formula {
+  background-color: #fde9e7;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2em;
+  color: #c0392b;
+}
+
+.example-container {
+  margin: 30px 0;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+}
+
+.flex-container {
+  display: flex;
+  background-color: #f1f1f1;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  position: relative;
+  padding-bottom: 25px; /* Espacio para las etiquetas de ancho */
+}
+
+.flex-item {
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  position: relative;
+}
+
+.width-label {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -20px;
+  font-size: 12px;
+  color: #333;
+  left: 0;
+}
+
+.step {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 3px solid #e74c3c;
+}
+
+.tip {
+  background-color: #fef5e7;
+  padding: 10px;
+  margin: 15px 0;
+  border-left: 3px solid #f39c12;
+}
+
+.warning {
+  background-color: #fff3e0;
+  padding: 10px;
+  margin: 15px 0;
+  border-left: 3px solid #d35400;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+thead {
+  background-color: #e74c3c;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Estilos específicos para los ejemplos */
+#ejemplo1 .flex-item:nth-child(1) {
+  background-color: #e74c3c;
+}
+
+#ejemplo1 .flex-item:nth-child(2) {
+  background-color: #e67e22;
+}
+
+#ejemplo1 .flex-item:nth-child(3) {
+  background-color: #f39c12;
+}
+
+#ejemplo2 .flex-item:nth-child(1) {
+  background-color: #c0392b;
+}
+
+#ejemplo2 .flex-item:nth-child(2) {
+  background-color: #d35400;
+}
+
+#ejemplo2 .flex-item:nth-child(3) {
+  background-color: #e67e22;
+}
+
+#ejemplo3 .flex-item:nth-child(1) {
+  background-color: #e74c3c;
+}
+
+#ejemplo3 .flex-item:nth-child(2) {
+  background-color: #9b59b6;
+}
+
+#ejemplo3 .flex-item:nth-child(3) {
+  background-color: #8e44ad;
+}
+
+#ejemplo4 .flex-item:nth-child(1) {
+  background-color: #c0392b;
+}
+
+#ejemplo4 .flex-item:nth-child(2) {
+  background-color: #d35400;
+}
+
+#ejemplo4 .flex-item:nth-child(3) {
+  background-color: #e67e22;
+}
+
+/* Calculadora */
+.calculator {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.calculator h3 {
+  text-align: center;
+  margin-top: 0;
+  color: #e74c3c;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
+.result {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.calculation-steps {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.live-demo {
+  margin-top: 30px;
+}
+
+.demo-container {
+  height: 80px;
+  margin-top: 10px;
+  position: relative;
+}

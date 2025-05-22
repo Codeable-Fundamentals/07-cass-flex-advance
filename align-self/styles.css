@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Contenedor flex base */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    margin-bottom: 30px;
+    border: 3px solid #2c3e50;
+    background-color: #ecf0f1;
+    
+    /* Para limitar el ancho y forzar múltiples filas */
+    /* width: 300px; */
+}
+
+/* Items dentro del contenedor flex */
+.item {
+    width: 60px;
+    height: 50px;
+    margin: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+}
+
+/* Este es la demotracion en clase */
+.align-items-center{
+    align-items: center;
+}
+.claseXXX{
+     align-items: flex-start; 
+}
+
+/* .container .item:nth-child(2){
+    color:red;
+    background-color: #2c3e50;
+    align-self: flex-end;
+} */
+
+.self-start{
+    background-color: red;
+    font-size: 10px;
+   align-items: flex-start;
+}
+
+.self-end {
+    background-color: indianred;
+    align-self: flex-end;
+}
+
+.self-center {
+    background-color: #2c3e50;
+    align-self: center;
+}
+
+.self-stretch{
+    background-color: #7a3030;
+    font-size: 30px;
+    align-self: stretch;
+    padding: 5px;
+
+}
+
+.self-baseline{
+    background-color: #41a657;
+    align-self: baseline;
+}
+
+
+
+/* Estilos para el ejemplo de baseline */
+.baseline-demo {
+    align-items: flex-start; /* Para que se note mejor el efecto de baseline */
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.text-large {
+    font-size: 28px;
+}
+
+.text-xl {
+    font-size: 36px;
+}

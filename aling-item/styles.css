@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Contenedor flex base */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    margin-bottom: 30px;
+    border: 3px solid #2c3e50;
+    background-color: #ecf0f1;    
+}
+
+/* Items dentro del contenedor flex */
+.item {
+    width: 60px;
+    height: 50px;
+    margin: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Items con altura variable para mostrar mejor los efectos */
+.tall {
+    height: 140px;
+}
+
+.short {
+    height: 30px;
+}
+
+.auto-height {
+    height: auto; /* Para el ejemplo de stretch */
+}
+
+/* Clases para texto de diferentes tamaños/posiciones */
+.text-small {
+    font-size: 12px;
+    height: 60px;
+}
+
+.text-large {
+    font-size: 30px;
+    height: 120px;
+}
+
+.text-bottom {
+    padding-top: 50px;
+    height: 100px;
+}
+
+.text-top {
+    padding-bottom: 50px;
+    height: 100px;
+}
+
+/* Diferentes valores de align-items */
+.flex-start {
+     align-items: flex-start; 
+}
+
+.flex-end {
+    align-items: flex-end;
+}
+
+.center {
+    /* align-items: center; */
+   align-items: center;
+   /* justify-content: flex-end; */
+   /* align-content: center; */
+}
+
+.stretch {
+    align-items: stretch;
+}
+
+.baseline {
+    align-items: baseline;
+}

@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Contenedor flex base */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    margin-bottom: 30px;
+    border: 3px solid #2c3e50;
+    background-color: #ecf0f1;
+    
+    /* Para limitar el ancho y forzar múltiples filas */
+     width: 300px; 
+}
+
+/* Items dentro del contenedor flex */
+.item {
+    width: 60px;
+    height: 50px;
+    margin: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Diferentes valores de align-content */
+.flex-start {
+    align-content: flex-start;
+}
+
+.flex-end {
+    align-content: flex-end;
+}
+
+.center {
+    align-content: center;
+}
+
+.space-between {
+    align-content: space-between;
+}
+
+.space-around {
+    align-content: space-around;
+}
+
+.space-evenly {
+    align-content: space-evenly;
+}
+
+.stretch {
+     align-content: stretch;
+    /* En stretch, los items se estiran para llenar el contenedor si no tienen altura definida */
+}

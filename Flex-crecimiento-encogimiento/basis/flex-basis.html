@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía completa de flex-basis</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            border: 3px solid #333;
+            margin: 20px 0;
+            padding: 10px;
+            background: #fff;
+            width: 500px;
+        }
+        
+        .item {
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+        }
+        
+        .example-title {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            margin: 30px 0 10px 0;
+            border-radius: 5px;
+        }
+        
+        .explanation {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        
+        .concept {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        
+        /* Ejemplo 1: Valores básicos */
+        .basis-auto .item {
+            flex-basis: auto;
+            background: #e74c3c;
+        }
+        
+        .basis-pixels .item1 {
+            flex-basis: 100px;
+            background: #3498db;
+        }
+        
+        .basis-pixels .item2 {
+            flex-basis: 200px;
+            background: #f39c12;
+        }
+        
+        .basis-pixels .item3 {
+            flex-basis: 150px;
+            background: #27ae60;
+        }
+        
+        /* Ejemplo 2: Porcentajes */
+        .basis-percent .item1 {
+            flex-basis: 20%;
+            background: #9b59b6;
+        }
+        
+        .basis-percent .item2 {
+            flex-basis: 50%;
+            background: #e67e22;
+        }
+        
+        .basis-percent .item3 {
+            flex-basis: 30%;
+            background: #1abc9c;
+        }
+        
+        /* Ejemplo 3: Con flex-grow */
+        .with-grow .item1 {
+            flex-basis: 100px;
+            flex-grow: 1;
+            background: #e74c3c;
+        }
+        
+        .with-grow .item2 {
+            flex-basis: 200px;
+            flex-grow: 2;
+            background: #f39c12;
+        }
+        
+        /* Ejemplo 4: flex-basis vs width */
+        .basis-vs-width .item1 {
+            width: 200px;
+            background: #95a5a6;
+        }
+        
+        .basis-vs-width .item2 {
+            flex-basis: 200px;
+            background: #34495e;
+        }
+        
+        /* Ejemplo 5: flex-basis: 0 */
+        .basis-zero .item {
+            flex-basis: 0;
+            flex-grow: 1;
+            background: #e67e22;
+        }
+        
+        .basis-zero .item2 {
+            flex-grow: 2;
+            background: #27ae60;
+        }
+        
+        /* Contenedor más pequeño para demostrar shrink */
+        .small-container {
+            width: 300px;
+        }
+        
+        .with-shrink .item1 {
+            flex-basis: 200px;
+            flex-shrink: 1;
+            background: #e74c3c;
+        }
+        
+        .with-shrink .item2 {
+            flex-basis: 200px;
+            flex-shrink: 2;
+            background: #f39c12;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        .highlight {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        
+        .visual-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .ruler {
+            background: linear-gradient(to right, #3498db 0%, #3498db 20%, #f39c12 20%, #f39c12 70%, #27ae60 70%, #27ae60 100%);
+            height: 30px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .ruler-label {
+            padding: 0 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📏 Flex-basis: Guía completa para estudiantes</h1>
+    
+    <div class="concept">
+        <h2>🎯 Concepto básico</h2>
+        <p><strong>flex-basis</strong> es el tamaño inicial de un elemento flex ANTES de que se apliquen flex-grow o flex-shrink.</p>
+        <p>Es como decir: "Empieza con este tamaño, luego veremos si necesitas crecer o encogerte"</p>
+    </div>
+
+    <div class="example-title">
+        📋 Ejemplo 1: flex-basis con valores absolutos
+    </div>
+    
+    <div class="container basis-pixels">
+        <div class="item item1">100px</div>
+        <div class="item item2">200px</div>
+        <div class="item item3">150px</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Código:</strong><br>
+        .item1 { flex-basis: 100px; }<br>
+        .item2 { flex-basis: 200px; }<br>
+        .item3 { flex-basis: 150px; }
+    </div>
+
+    <div class="step">
+        <h4>✨ ¿Qué está pasando?</h4>
+        <ul>
+            <li>Cada elemento tiene un tamaño fijo inicial</li>
+            <li>Si hay espacio extra, se distribuye según flex-grow</li>
+            <li>Si no hay espacio, se reduce según flex-shrink</li>
+            <li>En este caso, el contenedor es lo suficientemente grande</li>
+        </ul>
+    </div>
+
+    <div class="example-title">
+        📊 Ejemplo 2: flex-basis con porcentajes
+    </div>
+    
+    <div class="container basis-percent">
+        <div class="item item1">20%</div>
+        <div class="item item2">50%</div>
+        <div class="item item3">30%</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Código:</strong><br>
+        .item1 { flex-basis: 20%; }<br>
+        .item2 { flex-basis: 50%; }<br>
+        .item3 { flex-basis: 30%; }
+    </div>
+
+    <div class="visual-explanation">
+        <h4>📊 Distribución visual:</h4>
+        <div class="ruler">
+            <div class="ruler-label">20%</div>
+            <div class="ruler-label" style="margin-left: auto;">50%</div>
+            <div class="ruler-label" style="margin-left: auto;">30%</div>
+        </div>
+        <p><em>Los porcentajes se calculan sobre el ancho del contenedor</em></p>
+    </div>
+
+    <div class="example-title">
+        🚀 Ejemplo 3: flex-basis + flex-grow
+    </div>
+    
+    <div class="container with-grow">
+        <div class="item item1">100px + grow:1</div>
+        <div class="item item2">200px + grow:2</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Proceso paso a paso:</strong><br>
+        1. Item1 empieza con 100px, Item2 con 200px<br>
+        2. Espacio usado: 100px + 200px = 300px<br>
+        3. Espacio sobrante: 500px - 300px = 200px<br>
+        4. Se distribuye 200px extra: 1/3 para item1, 2/3 para item2<br>
+        5. Resultado: Item1 ≈ 167px, Item2 ≈ 333px
+    </div>
+
+    <div class="example-title">
+        ⚔️ Ejemplo 4: flex-basis vs width
+    </div>
+    
+    <div class="comparison">
+        <div>
+            <h4>Con width (menos flexible)</h4>
+            <div class="container basis-vs-width">
+                <div class="item item1">width: 200px</div>
+                <div class="item item1">width: 200px</div>
+            </div>
+        </div>
+        
+        <div>
+            <h4>Con flex-basis (más flexible)</h4>
+            <div class="container basis-vs-width">
+                <div class="item item2">flex-basis: 200px</div>
+                <div class="item item2">flex-basis: 200px</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h4>🏆 ¿Por qué flex-basis es mejor que width?</h4>
+        <ul>
+            <li><strong>Semánticamente correcto:</strong> Diseñado específicamente para flexbox</li>
+            <li><strong>Más flexible:</strong> Funciona mejor con flex-grow y flex-shrink</li>
+            <li><strong>Direccional:</strong> Se adapta a flex-direction (row/column)</li>
+            <li><strong>Fácil de sobrescribir:</strong> flex-grow y flex-shrink pueden modificarlo</li>
+        </ul>
+    </div>
+
+    <div class="example-title">
+        🔥 Ejemplo 5: flex-basis: 0 (Muy importante)
+    </div>
+    
+    <div class="container basis-zero">
+        <div class="item">Content A</div>
+        <div class="item item2">Content B longer</div>
+        <div class="item">Content C</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Código:</strong><br>
+        .item { flex-basis: 0; flex-grow: 1; }<br>
+        .item2 { flex-grow: 2; }
+    </div>
+
+    <div class="step">
+        <h4>🎯 ¿Por qué flex-basis: 0?</h4>
+        <p>Al poner flex-basis: 0, todos los elementos empiezan desde cero y el espacio se distribuye exclusivamente por flex-grow, ignorando el contenido natural.</p>
+        <ul>
+            <li><strong>Sin flex-basis: 0:</strong> El espacio se distribuye basándose en el contenido</li>
+            <li><strong>Con flex-basis: 0:</strong> El espacio se distribuye solo por flex-grow</li>
+        </ul>
+    </div>
+
+    <div class="example-title">
+        📉 Ejemplo 6: flex-basis + flex-shrink
+    </div>
+    
+    <div class="container small-container with-shrink">
+        <div class="item item1">200px<br>shrink:1</div>
+        <div class="item item2">200px<br>shrink:2</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Contenedor: 300px</strong><br>
+        <strong>Necesario:</strong> 200px + 200px = 400px<br>
+        <strong>Falta:</strong> 100px<br>
+        <strong>Resultado:</strong> Item2 se encoge el doble que Item1
+    </div>
+
+    <div class="example-title">
+        📚 Valores especiales de flex-basis
+    </div>
+    
+    <div class="step">
+        <h4>🔤 Valores que puedes usar:</h4>
+        <div class="code-block">
+            flex-basis: auto;        /* Usa el width/height si está definido, sino el contenido */
+            flex-basis: 0;           /* Empieza desde cero */
+            flex-basis: 100px;       /* Tamaño fijo en píxeles */
+            flex-basis: 50%;         /* Porcentaje del contenedor */
+            flex-basis: content;     /* Basado en el contenido natural */
+            flex-basis: max-content; /* El contenido más ancho posible */
+            flex-basis: min-content; /* El contenido más estrecho posible */
+        </div>
+    </div>
+
+    <div class="warning">
+        <h4>⚠️ Errores comunes de estudiantes:</h4>
+        <ol>
+            <li><strong>Confundir con width:</strong> flex-basis NO es lo mismo que width</li>
+            <li><strong>Olvidar la dirección:</strong> En column, flex-basis afecta la altura</li>
+            <li><strong>No entender "auto":</strong> auto significa "mira mi width, si no tengo, usa mi contenido"</li>
+            <li><strong>Mezclar unidades:</strong> Si usas %, asegúrate de que sumen 100% o menos</li>
+        </ol>
+    </div>
+
+    <div class="highlight">
+        <h3>🎓 Resumen para tus estudiantes</h3>
+        <ol>
+            <li><strong>flex-basis</strong> = tamaño inicial antes de crecer/encoger</li>
+            <li><strong>Es mejor que width</strong> en flexbox</li>
+            <li><strong>Se combina</strong> con flex-grow y flex-shrink</li>
+            <li><strong>Valores comunes:</strong> 0, auto, píxeles, porcentajes</li>
+            <li><strong>Clave para layouts</strong> responsivos y controlados</li>
+        </ol>
+    </div>
+
+    <div class="concept">
+        <h3>🛠️ Casos de uso prácticos</h3>
+        <ul>
+            <li><strong>Sidebar fijo:</strong> flex-basis: 300px</li>
+            <li><strong>Columnas iguales:</strong> flex-basis: 0; flex-grow: 1</li>
+            <li><strong>Layout 30-70:</strong> flex-basis: 30% y 70%</li>
+            <li><strong>Contenido adaptativo:</strong> flex-basis: auto</li>
+        </ul>
+    </div>
+
+</body>
+</html>

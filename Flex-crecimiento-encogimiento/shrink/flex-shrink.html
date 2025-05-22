@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de flex-shrink</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Comprendiendo flex-shrink</h1>
+    <p class="intro">La propiedad <code>flex-shrink</code> define la capacidad de un elemento flex para encogerse si es necesario.
+       Determina cuánto se reducirá un elemento en relación a los demás cuando no hay suficiente espacio en el contenedor.</p>
+    
+    <h2>Ejemplo 1: Todos los elementos con flex-shrink: 1 (valor predeterminado)</h2>
+    <p>Todos los elementos se encogerán por igual cuando no haya suficiente espacio:</p>
+    <div class="container example-1">
+        <div class="box large">1<br><small>flex-shrink: 1</small></div>
+        <div class="box large">2<br><small>flex-shrink: 1</small></div>
+        <div class="box large">3<br><small>flex-shrink: 1</small></div>
+    </div>
+    
+    <h2>Ejemplo 2: Un elemento con flex-shrink: 0</h2>
+    <p>El segundo elemento no se encoge, los otros sí:</p>
+    <div class="container example-2">
+        <div class="box large">1<br><small>flex-shrink: 1</small></div>
+        <div class="box large no-shrink">2<br><small>flex-shrink: 0</small></div>
+        <div class="box large">3<br><small>flex-shrink: 1</small></div>
+    </div>
+    
+    <h2>Ejemplo 3: Diferentes valores de flex-shrink</h2>
+    <p>El elemento 1 se encoge más que el elemento 3, y el elemento 2 no se encoge:</p>
+    <div class="container example-3">
+        <div class="box large shrink-2">1<br><small>flex-shrink: 2</small></div>
+        <div class="box large no-shrink">2<br><small>flex-shrink: 0</small></div>
+        <div class="box large">3<br><small>flex-shrink: 1</small></div>
+    </div>
+
+    <h2>Ejercicio Práctico</h2>
+    <p>Modifica los valores de flex-shrink para que:</p>
+    <ul>
+        <li>El primer elemento nunca se encoja</li>
+        <li>El elemento del medio se encoja el doble que el último</li>
+    </ul>
+    <div class="container exercise">
+        <div class="box large exercise-box">1<br><small>?</small></div>
+        <div class="box large exercise-box">2<br><small>?</small></div>
+        <div class="box large exercise-box">3<br><small>?</small></div>
+    </div>
+</body>
+</html>

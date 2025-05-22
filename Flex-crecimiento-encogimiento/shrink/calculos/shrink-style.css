@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  border: 3px solid #333;
+  margin: 20px 0;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.item {
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #000;
+}
+
+.example-title {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  margin: 30px 0 10px 0;
+  border-radius: 5px;
+}
+
+.calculation {
+  background: #e8f4fd;
+  border-left: 4px solid #3498db;
+  padding: 15px;
+  margin: 15px 0;
+  font-family: monospace;
+}
+
+/* Ejemplo 1: Valores por defecto */
+.example1 {
+  width: 400px;
+}
+
+.example1 .item {
+  width: 150px;
+  background: #e74c3c;
+}
+
+/* Ejemplo 2: flex-shrink diferente */
+.example2 {
+  width: 400px;
+}
+
+.example2 .item1 {
+  width: 150px;
+  background: #e74c3c;
+  flex-shrink: 1;
+}
+
+.example2 .item2 {
+  width: 150px;
+  background: #f39c12;
+  flex-shrink: 2;
+}
+
+.example2 .item3 {
+  width: 150px;
+  background: #27ae60;
+  flex-shrink: 0;
+}
+
+/* Ejemplo 3: Diferentes anchos iniciales */
+.example3 {
+  width: 500px;
+}
+
+.example3 .item1 {
+  width: 200px;
+  background: #9b59b6;
+  flex-shrink: 1;
+}
+
+.example3 .item2 {
+  width: 300px;
+  background: #e67e22;
+  flex-shrink: 1;
+}
+
+/* Ejemplo 4: Comparación directa */
+.comparison {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.comparison > div {
+  flex: 1;
+  min-width: 300px;
+}
+
+.before,
+.after {
+  width: 300px;
+}
+
+.before .item,
+.after .item {
+  background: #34495e;
+}
+
+.after .item1 {
+  background: #e74c3c;
+  flex-shrink: 1;
+}
+
+.after .item2 {
+  background: #f39c12;
+  flex-shrink: 3;
+}
+
+.highlight {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}

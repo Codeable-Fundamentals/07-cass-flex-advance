@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex vs Inline-Flex</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Diferencia entre display: flex y display: inline-flex</h1>
+    
+    <p class="intro">Los contenedores con <code>display: flex</code> ocupan todo el ancho disponible (como elementos de bloque), 
+    mientras que los contenedores con <code>display: inline-flex</code> ocupan solo el espacio necesario para su contenido 
+    (como elementos en línea).</p>
+    
+    <h2>display: flex</h2>
+    <p>Este contenedor se comporta como un elemento de bloque (ocupa todo el ancho):</p>
+    
+    <div class="flex-container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    
+    <p class="after-container">Este texto está después del contenedor flex.</p>
+    
+    <h2>display: inline-flex</h2>
+    <p>Este contenedor se comporta como un elemento en línea (solo ocupa el espacio necesario):</p>
+    
+    <div class="inline-flex-container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    
+    <span class="after-container">Este texto está al lado del contenedor inline-flex.</span>
+    
+    <h2>Ejemplo con texto alrededor</h2>
+    
+    <div class="text-example">
+        <p>
+            Este es un texto normal que fluye alrededor de los contenedores. 
+            <div class="flex-container smaller">
+                <div class="box">F</div>
+                <div class="box">L</div>
+                <div class="box">E</div>
+                <div class="box">X</div>
+            </div>
+            Como puedes ver, el contenedor flex crea un salto de línea antes y después, 
+            ya que se comporta como un elemento de bloque.
+        </p>
+        
+        <p>
+            Este es otro texto normal que fluye alrededor de los contenedores. 
+            <span class="inline-flex-container smaller">
+                <span class="box">I-F</span>
+                <span class="box">L</span>
+                <span class="box">E</span>
+                <span class="box">X</span>
+            </span>
+            Como puedes ver, el contenedor inline-flex se integra con el texto, 
+            ya que se comporta como un elemento en línea.
+        </p>
+    </div>
+
+    <h2>Comparación lado a lado</h2>
+    <div class="comparison">
+        <div class="column">
+            <h3>display: flex</h3>
+            <div class="outline">
+                <div class="flex-container example">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                </div>
+            </div>
+            <p>Ocupa todo el ancho disponible (100%)</p>
+        </div>
+        
+        <div class="column">
+            <h3>display: inline-flex</h3>
+            <div class="outline">
+                <div class="inline-flex-container example">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                </div>
+            </div>
+            <p>Solo ocupa el espacio necesario para su contenido</p>
+        </div>
+    </div>
+</body>
+</html>

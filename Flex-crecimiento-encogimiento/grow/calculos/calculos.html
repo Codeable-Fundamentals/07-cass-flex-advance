@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía y Calculadora de flex-grow</title>
+    <link rel="stylesheet" href="grow-style.css" />
+  </head>
+  <body>
+    <h1>Guía Completa de flex-grow y sus Cálculos</h1>
+
+    <p>
+      Esta guía interactiva te ayudará a entender cómo funciona
+      <code>flex-grow</code> en CSS, cómo se calculan los anchos finales de los
+      elementos flexibles y cómo puedes usarlo en tus proyectos.
+    </p>
+
+    <h2>La fórmula de flex-grow</h2>
+
+    <div class="formula">
+      Ancho final = tamaño base + (espacio disponible × proporción de flex-grow)
+    </div>
+
+    <h3>Desglose de cada componente:</h3>
+
+    <h4>1. Tamaño base</h4>
+    <p>
+      El <strong>tamaño base</strong> de un elemento flex se determina en este
+      orden de prioridad:
+    </p>
+    <ol>
+      <li>El valor de <code>flex-basis</code> (si está especificado)</li>
+      <li>
+        El valor de <code>width</code> (si flex-basis no está especificado o es
+        <code>auto</code>)
+      </li>
+      <li>El tamaño del contenido (si no hay flex-basis ni width)</li>
+    </ol>
+
+    <h4>2. Espacio disponible</h4>
+    <p>El <strong>espacio disponible</strong> se calcula así:</p>
+    <pre>
+Espacio disponible = ancho del contenedor - suma de todos los tamaños base</pre
+    >
+
+    <h4>3. Proporción de flex-grow</h4>
+    <p>
+      La <strong>proporción de flex-grow</strong> para cada elemento se calcula:
+    </p>
+    <pre>
+Proporción = valor de flex-grow del elemento ÷ suma de todos los valores flex-grow</pre
+    >
+
+    <div class="tip">
+      <strong>Consejo:</strong> Piensa en <code>flex-grow</code> como "partes" o
+      "acciones" del espacio disponible. Si un elemento tiene
+      <code>flex-grow: 2</code> y otro tiene <code>flex-grow: 1</code>, el
+      primero recibirá el doble de espacio extra que el segundo.
+    </div>
+
+    <h2>Ejemplos de cálculo</h2>
+
+    <h3>Ejemplo 1: Sin tamaño base explícito (solo contenido)</h3>
+
+    <div class="example-container">
+      <p>Contenedor: 500px de ancho</p>
+      <pre>
+.container {
+    display: flex;
+    width: 500px;
+}
+
+.item1 { flex-grow: 3; } /* Solo contenido: una letra "A" ≈ 20px */
+.item2 { flex-grow: 2; } /* Solo contenido: una letra "B" ≈ 20px */
+.item3 { flex-grow: 1; } /* Solo contenido: una letra "C" ≈ 20px */</pre
+      >
+
+      <div class="flex-container" id="ejemplo1" style="width: 500px">
+        <div class="flex-item" style="width: 240px">
+          A
+          <div class="width-label">240px</div>
+        </div>
+        <div class="flex-item" style="width: 167px">
+          B
+          <div class="width-label">167px</div>
+        </div>
+        <div class="flex-item" style="width: 93px">
+          C
+          <div class="width-label">93px</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 1:</strong> Tamaños base</p>
+        <ul>
+          <li>item1: 20px (aproximado por el contenido)</li>
+          <li>item2: 20px (aproximado por el contenido)</li>
+          <li>item3: 20px (aproximado por el contenido)</li>
+          <li>Total de tamaños base: 60px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 2:</strong> Espacio disponible</p>
+        <ul>
+          <li>500px - 60px = 440px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 3:</strong> Suma total de flex-grow</p>
+        <ul>
+          <li>3 + 2 + 1 = 6</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 4:</strong> Proporción para cada elemento</p>
+        <ul>
+          <li>item1: 3/6 = 0.5 (50%)</li>
+          <li>item2: 2/6 = 0.33 (33.33%)</li>
+          <li>item3: 1/6 = 0.17 (16.67%)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 5:</strong> Distribución del espacio disponible</p>
+        <ul>
+          <li>item1: 440px × 0.5 = 220px</li>
+          <li>item2: 440px × 0.33 = 146.67px (≈147px)</li>
+          <li>item3: 440px × 0.17 = 73.33px (≈73px)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 6:</strong> Ancho final</p>
+        <ul>
+          <li>item1: 20px + 220px = <strong>240px</strong></li>
+          <li>item2: 20px + 147px = <strong>167px</strong></li>
+          <li>item3: 20px + 73px = <strong>93px</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Ejemplo 2: Con width establecido</h3>
+
+    <div class="example-container">
+      <p>Contenedor: 600px de ancho</p>
+      <pre>
+.container {
+    display: flex;
+    width: 600px;
+}
+
+.item1 {
+    width: 100px;
+    flex-grow: 4;
+}
+
+.item2 {
+    width: 50px;
+    flex-grow: 2;
+}
+
+.item3 {
+    width: 150px;
+    flex-grow: 1;
+}</pre
+      >
+
+      <div class="flex-container" id="ejemplo2" style="width: 600px">
+        <div class="flex-item" style="width: 271px">
+          1
+          <div class="width-label">271px</div>
+        </div>
+        <div class="flex-item" style="width: 137px">
+          2
+          <div class="width-label">137px</div>
+        </div>
+        <div class="flex-item" style="width: 192px">
+          3
+          <div class="width-label">192px</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 1:</strong> Tamaños base</p>
+        <ul>
+          <li>item1: 100px (por width)</li>
+          <li>item2: 50px (por width)</li>
+          <li>item3: 150px (por width)</li>
+          <li>Total de tamaños base: 300px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 2:</strong> Espacio disponible</p>
+        <ul>
+          <li>600px - 300px = 300px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 3:</strong> Suma total de flex-grow</p>
+        <ul>
+          <li>4 + 2 + 1 = 7</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 4:</strong> Proporción para cada elemento</p>
+        <ul>
+          <li>item1: 4/7 = 0.57 (≈57%)</li>
+          <li>item2: 2/7 = 0.29 (≈29%)</li>
+          <li>item3: 1/7 = 0.14 (≈14%)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 5:</strong> Distribución del espacio disponible</p>
+        <ul>
+          <li>item1: 300px × 0.57 = 171px</li>
+          <li>item2: 300px × 0.29 = 87px</li>
+          <li>item3: 300px × 0.14 = 42px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 6:</strong> Ancho final</p>
+        <ul>
+          <li>item1: 100px + 171px = <strong>271px</strong></li>
+          <li>item2: 50px + 87px = <strong>137px</strong></li>
+          <li>item3: 150px + 42px = <strong>192px</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Ejemplo 3: Con flex-basis establecido</h3>
+
+    <div class="example-container">
+      <p>Contenedor: 800px de ancho</p>
+      <pre>
+.container {
+    display: flex;
+    width: 800px;
+}
+
+.item1 {
+    flex-basis: 200px;
+    flex-grow: 5;
+}
+
+.item2 {
+    width: 100px; /* Ignorado ya que flex-basis tiene prioridad */
+    flex-basis: 150px;
+    flex-grow: 3;
+}
+
+.item3 {
+    flex-basis: 50px;
+    flex-grow: 2;
+}</pre
+      >
+
+      <div class="flex-container" id="ejemplo3" style="width: 800px">
+        <div class="flex-item" style="width: 400px">
+          1
+          <div class="width-label">400px</div>
+        </div>
+        <div class="flex-item" style="width: 270px">
+          2
+          <div class="width-label">270px</div>
+        </div>
+        <div class="flex-item" style="width: 130px">
+          3
+          <div class="width-label">130px</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 1:</strong> Tamaños base</p>
+        <ul>
+          <li>item1: 200px (por flex-basis)</li>
+          <li>item2: 150px (por flex-basis, ignora width)</li>
+          <li>item3: 50px (por flex-basis)</li>
+          <li>Total de tamaños base: 400px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 2:</strong> Espacio disponible</p>
+        <ul>
+          <li>800px - 400px = 400px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 3:</strong> Suma total de flex-grow</p>
+        <ul>
+          <li>5 + 3 + 2 = 10</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 4:</strong> Proporción para cada elemento</p>
+        <ul>
+          <li>item1: 5/10 = 0.5 (50%)</li>
+          <li>item2: 3/10 = 0.3 (30%)</li>
+          <li>item3: 2/10 = 0.2 (20%)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 5:</strong> Distribución del espacio disponible</p>
+        <ul>
+          <li>item1: 400px × 0.5 = 200px</li>
+          <li>item2: 400px × 0.3 = 120px</li>
+          <li>item3: 400px × 0.2 = 80px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 6:</strong> Ancho final</p>
+        <ul>
+          <li>item1: 200px + 200px = <strong>400px</strong></li>
+          <li>item2: 150px + 120px = <strong>270px</strong></li>
+          <li>item3: 50px + 80px = <strong>130px</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Ejemplo 4: Con flex-basis: 0</h3>
+
+    <div class="example-container">
+      <p>Contenedor: 1000px de ancho</p>
+      <pre>
+.container {
+    display: flex;
+    width: 1000px;
+}
+
+.item1 {
+    width: 200px; /* Ignorado debido a flex-basis: 0 */
+    flex-basis: 0;
+    flex-grow: 3;
+}
+
+.item2 {
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.item3 {
+    flex-basis: 0;
+    flex-grow: 5;
+}</pre
+      >
+
+      <div class="flex-container" id="ejemplo4" style="width: 1000px">
+        <div class="flex-item" style="width: 300px">
+          1
+          <div class="width-label">300px</div>
+        </div>
+        <div class="flex-item" style="width: 200px">
+          2
+          <div class="width-label">200px</div>
+        </div>
+        <div class="flex-item" style="width: 500px">
+          3
+          <div class="width-label">500px</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 1:</strong> Tamaños base</p>
+        <ul>
+          <li>item1: 0px (por flex-basis: 0)</li>
+          <li>item2: 0px (por flex-basis: 0)</li>
+          <li>item3: 0px (por flex-basis: 0)</li>
+          <li>Total de tamaños base: 0px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 2:</strong> Espacio disponible</p>
+        <ul>
+          <li>1000px - 0px = 1000px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 3:</strong> Suma total de flex-grow</p>
+        <ul>
+          <li>3 + 2 + 5 = 10</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 4:</strong> Proporción para cada elemento</p>
+        <ul>
+          <li>item1: 3/10 = 0.3 (30%)</li>
+          <li>item2: 2/10 = 0.2 (20%)</li>
+          <li>item3: 5/10 = 0.5 (50%)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 5:</strong> Distribución del espacio disponible</p>
+        <ul>
+          <li>item1: 1000px × 0.3 = 300px</li>
+          <li>item2: 1000px × 0.2 = 200px</li>
+          <li>item3: 1000px × 0.5 = 500px</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><strong>Paso 6:</strong> Ancho final</p>
+        <ul>
+          <li>item1: 0px + 300px = <strong>300px</strong></li>
+          <li>item2: 0px + 200px = <strong>200px</strong></li>
+          <li>item3: 0px + 500px = <strong>500px</strong></li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <p>
+          <strong>Nota importante:</strong> Con <code>flex-basis: 0</code>, los
+          cálculos son más simples y predecibles. El tamaño final se corresponde
+          exactamente con la proporción de <code>flex-grow</code>. Esta es la
+          razón por la que muchos desarrolladores prefieren usar
+          <code>flex: 1</code> (que equivale a
+          <code>flex-grow: 1; flex-shrink: 1; flex-basis: 0%</code>) para
+          distribuir el espacio de manera uniforme.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+.intro {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-left: 5px solid #3498db;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Estilos para los contenedores flex */
+.container {
+    display: flex;
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 2px solid #3498db;
+    width: 100%; /* Aseguramos que el contenedor tenga un ancho definido */
+}
+
+/* Estilos para las cajas dentro de los contenedores */
+.box {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+/* Cajas grandes para mostrar mejor el efecto de encogimiento */
+.large {
+    width: 250px; /* Ancho fijo grande para forzar el encogimiento */
+}
+
+small {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* Valores de flex-shrink */
+.no-shrink {
+    flex-shrink: 0;
+}
+
+.shrink-2 {
+    flex-shrink: 2;
+}
+
+/* Estilos para el ejercicio */
+.exercise {
+    border: 2px dashed #e74c3c;
+}
+
+.exercise-box {
+    background-color: #e74c3c;
+}
+
+/* Solución del ejercicio - Comentada para que los estudiantes la completen */
+/*
+.exercise-box:nth-child(1) {
+    flex-shrink: 0;
+}
+
+.exercise-box:nth-child(2) {
+    flex-shrink: 2;
+}
+
+.exercise-box:nth-child(3) {
+    flex-shrink: 1;
+}
+*/

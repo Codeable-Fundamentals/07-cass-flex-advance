@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase flex-shrink</title>
+    <style>
+      body {
+        font-family: system-ui;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        width: 400px;
+        display: flex;
+        justify-content: center;
+
+        background-color: rgb(240, 202, 154);
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        background-color: #3498db;
+      }
+      /* Calculos CON MARGIN */
+      /* 
+      Márgenes (NO se encogen):
+        • 3 cajas × (10px izq + 10px der) = 3 × 20px = 60px fijos
+
+     Espacio disponible para contenido:
+        • 400px (contenedor) - 60px (márgenes) = 340px
+
+        Espacio necesario para contenido:
+        • 3 × 200px = 600px
+
+        Espacio a reducir:
+        • 600px - 340px = 260px
+
+        Paso 2: Calcular pesos (flex-shrink × ancho inicial)
+        box 1 = 1 * 200px = 200px
+        box 2 = 3 * 200px = 600px
+        box 3 = 1 * 200px = 200px
+        Peso total = 200px + 600px + 200px = 1000px
+
+        Paso 3: Calcular proporciones
+        box 1 = 200px / 1000px = 0.2
+        box 2 = 600px / 1000px = 0.6
+        box 3 = 200px / 1000px = 0.2
+
+        Paso 4: Calcular reducción (AQUI HACE LA DIFERENCIA)
+        box 1 = 260px * 0.2 = 52px
+        box 2 = 260px * 0.6 = 156px
+        box 3 = 260px * 0.2 = 52px
+
+        Paso 5: Calcular tamaño final
+        box 1 = 200px - 52px = 148px
+        box 2 = 200px - 156px = 44px
+        box 3 = 200px - 52px = 148px
+
+        Paso 6: Tamaño final
+        box 1 = 148px
+        box 2 = 44px
+        box 3 = 148px
+
+        */  
+
+      /* Calculos SIN MARGIN */
+      /*
+            box 1 = 200px
+            box 2 = 200px
+            box 3 = 200px
+            Espacio total = 3 * 200px = 600px
+            Espacio disponible = 400px
+            Espacio a reducir = 600px - 400px = 200px
+            
+            Paso 2: Calcular pesos (flex-shrink × ancho inicial)
+            box 1 = 1 * 200px = 200px
+            box 2 = 3 * 200px = 600px
+            box 3 = 1 * 200px = 200px
+            Peso total = 200px + 600px + 200px = 1000px
+
+            Paso 3: Calcular proporciones
+            box 1 = 200px / 1000px = 0.2
+            box 2 = 600px / 1000px = 0.6
+            box 3 = 200px / 1000px = 0.2
+
+            Paso 4: Calcular reducción
+            box 1 = 200px * 0.2 = 40px
+            box 2 = 200px * 0.6 = 120px
+            box 3 = 200px * 0.2 = 40px
+
+            Paso 5: Calcular tamaño final
+            box 1 = 200px - 40px = 160px        
+            box 2 = 200px - 120px = 80px
+            box 3 = 200px - 40px = 160px
+
+            Paso 6: Tamaño final
+            box 1 = 160px
+            box 2 = 80px
+            box 3 = 160px
+        */
+
+        /*
+        
+        NOTA IMPORTANTE!
+        
+        Concepto clave: flex-shrink solo afecta el contenido (width), NO los:
+
+        ❌ Márgenes
+        ❌ Borders
+        ❌ Paddings
+        
+        */
+      .shrink-1 {
+        flex-shrink: 1; /* Se encoge */
+      }
+      .shrink-2 {
+        flex-shrink: 3; /* Se encoge más que el anterior */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ejemplo flex-shrink</h1>
+    <div class="container">
+      <div class="box shrink-1">caja 1</div>
+      <div class="box shrink-2">caja 2</div>
+      <div class="box shrink-1">caja 3</div>
+    </div>
+  </body>
+</html>

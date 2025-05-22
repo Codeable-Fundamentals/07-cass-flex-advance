@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display: Flex Vx Display: Flex-inline</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 800px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+    }
+
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .container {
+      border: 1px solid red;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    .item {
+      background-color: #3498db;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 4px;
+      flex: 1;
+    }
+    .container.inline-flex {
+      display: inline-flex;
+    }
+  </style>
+  <body>
+    <h1>Display: Flex vs Display: Inline-Flex</h1>
+    <p>
+      Los contenedores con <code>display: flex</code> ocupan todo el ancho
+      disponible (como elementos de bloque), mientras que los contenedores con
+      <code>display: inline-flex</code> ocupan solo el espacio necesario para su
+      contenido (como elementos en línea).
+    </p>
+
+    <h2>Ejemplo de display: flex</h2>
+    <div class="container" style="display: flex">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+
+    <h2>Ejemplo de display: inline-flex</h2>
+    <div class="container" style="display: inline-flex">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </body>
+</html>
